@@ -1,6 +1,4 @@
-# Shell: The 03:12 Incident
-
-Something broke at 3 a.m., a bot is scraping, and someone is guessing the admin password. The only evidence is one big log file. Write the tools that find the story.
+<p align="center"><img src="assets/banner.svg" alt="Shell: The 03:12 Incident" width="100%"></p>
 
 | | |
 |-|-|
@@ -17,9 +15,10 @@ Something broke at 3 a.m., a bot is scraping, and someone is guessing the admin 
 5. Commit and push. Open the **Actions** tab of your fork (click *I understand my workflows, go ahead and enable them* the first time). The **Lab check** shows what is still missing.
 6. When the check is green, **submit the URL of your fork** in the course platform.
 
+> [!NOTE]
 > The check only looks at your answers and any files the lab asks you to commit. Your instructor reads your work and may ask you to explain any line.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## The situation
 
@@ -27,6 +26,7 @@ Tuesday morning. The overnight on-call phone rang at 03:12 and went quiet at 03:
 
 All you have is the server's access log: 40,000 lines of text. Nobody is going to read that by eye. You are going to build two small tools that turn it into answers: one that **summarises** a log, one that **raises an alert** when the error rate is too high. Tools you can run on every log from now on.
 
+> [!IMPORTANT]
 > **Your mission**
 > - Explore the log with the classic text tools (`grep`, `awk`, `cut`, `sort`, `uniq`)
 > - Reconstruct the night: outage, scraper, password guesser, slow period
@@ -35,7 +35,7 @@ All you have is the server's access log: 40,000 lines of text. Nobody is going t
 
 **Time:** 75-90 min | **Cost:** free | **You need:** Bash, Python 3, `awk`, `sort`, `uniq` in your Ubuntu environment
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 0 - Set the scene
 
@@ -53,7 +53,7 @@ You get `data/access.log`. Every line looks like this:
 
 In order: client IP, two unused fields, time, request (method, path, protocol), status, bytes, referrer, user agent, and the **request time in seconds**.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 1 - Recon: learn the format with your own eyes
 
@@ -64,11 +64,13 @@ Do these by hand in the terminal first. Do not write a script yet.
 3. How many requests failed with a 5xx status? Is that a lot? (Percentage, not count.)
 4. Which `awk` field numbers hold the IP, the time, the method, the path and the status? Print each one for the first three lines.
 
+> [!NOTE]
 > **Predict** Out of all requests, what percentage are 5xx? Write a number, then compute it.
 
+> [!NOTE]
 > **Think** Why does `sort | uniq -c | sort -rn` appear in nearly every log analysis? What breaks if you forget the first `sort`?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 2 - Investigate: the four stories
 
@@ -79,9 +81,10 @@ Use your pipelines to answer, and keep the commands. They go into your submissio
 3. **The password guesser.** Which requests return 401? To which path, from which IP, at what time of day? How many in how many minutes?
 4. **The slow hour.** The last field is the request time. Which requests took more than 3 seconds? Which path, which time window? (Hint: `awk '$NF > 3'`.)
 
+> [!WARNING]
 > **Break it** Your colleague says "the 5xx at 03:12 were a DDoS". Use the data to argue for or against: how many different client IPs hit the failing endpoint during the outage, compared with a normal hour?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 3 - Build analyze.sh
 
@@ -116,7 +119,7 @@ Rules:
 
 Build it one section at a time, run it after each addition. Tip: every section is a pipeline you already wrote in Part 1 and 2.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 4 - Build alert.sh
 
@@ -127,9 +130,10 @@ Build it one section at a time, run it after each addition. Tip: every section i
 - Otherwise print `OK: ...` and exit **0**.
 - Wrong number of arguments: usage, exit **2**.
 
+> [!NOTE]
 > **Think** Why use the exit code instead of only printing text? Imagine the script running from cron every minute and from a CI pipeline step: what does each one do with a non-zero exit code? What threshold would you set for Clipstr, and what would a threshold that is too low cost the team?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 5 - Prove it
 
@@ -139,7 +143,7 @@ Build it one section at a time, run it after each addition. Tip: every section i
 
 It tests both scripts on your incident log **and on logs it generates just now with different data**, so hard-coded answers will fail.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Level up (optional)
 
