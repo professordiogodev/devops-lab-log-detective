@@ -135,7 +135,7 @@ Build it one section at a time, run it after each addition. Tip: every section i
 - Wrong number of arguments: usage, exit **2**.
 
 > [!NOTE]
-> **Think** Why use the exit code instead of only printing text? Imagine the script running from cron every minute and from a CI pipeline step: what does each one do with a non-zero exit code? What threshold would you set for Clipstr, and what would a threshold that is too low cost the team?
+> **Think** Why use the exit code instead of only printing text? Imagine the script running from cron every minute and from a CI pipeline step: what does each one do with a non-zero exit code? What threshold would you set for Clippy, and what would a threshold that is too low cost the team?
 
 <p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
@@ -190,7 +190,7 @@ Answer the questions in `SUBMISSION.md` in **your fork** (paste output in code b
 **Questions to answer**
 
 1. Tell the story of the night in 5-8 lines: when did the outage start and end, which endpoint failed, and what was the peak minute? Back every claim with the command that produced it.
-2. Which IP is scraping Clipstr and how do you know it is a bot and not a busy customer? Which IP is attacking the admin login and what evidence shows it?
+2. Which IP is scraping Clippy and how do you know it is a bot and not a busy customer? Which IP is attacking the admin login and what evidence shows it?
 3. Paste your `analyze.sh` output for the log. Which one pipeline in the script are you proudest of, and why does `sort | uniq -c | sort -rn` appear so often?
 4. What exit code does `alert.sh` use and why does that matter to a cron job or a CI pipeline? What threshold would you choose for production and why?
 5. What would you change to run this on a log that is 50 GB instead of 5 MB?

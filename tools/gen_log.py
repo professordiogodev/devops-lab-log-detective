@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a Clipstr access log.  usage: gen_log.py OUTFILE SEED COUNT [story]
+"""Generate a Clippy access log.  usage: gen_log.py OUTFILE SEED COUNT [story]
 Combined log format plus request time in seconds at the end."""
 import random, sys, datetime
 

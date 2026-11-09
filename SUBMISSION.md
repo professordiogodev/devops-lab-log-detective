@@ -16,7 +16,7 @@ Answer in your own words. Where a question asks for output, paste it in a code b
 
 <!-- replace this line with your answer -->
 
-### Q2. Which IP is scraping Clipstr and how do you know it is a bot and not a busy customer? Which IP is attacking the admin login and what evidence shows it?
+### Q2. Which IP is scraping Clippy and how do you know it is a bot and not a busy customer? Which IP is attacking the admin login and what evidence shows it?
 
 **Your answer:**
 
