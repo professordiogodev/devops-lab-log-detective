@@ -2,9 +2,13 @@
 
 ## The situation
 
-Tuesday morning. The overnight on-call phone rang at 03:12 and went quiet at 03:19. Nobody woke up. Monitoring shows the site "recovered by itself". The CEO wants a one-page explanation by 10:00, security noticed odd traffic and the CFO asks why the bandwidth bill grew.
+```text
+10:00 DEADLINE  one page for the CEO
+```
 
-All you have is the server's access log: 40,000 lines of text. Nobody is going to read that by eye. You are going to build two small tools that turn it into answers: one that **summarises** a log, one that **raises an alert** when the error rate is too high. Tools you can run on every log from now on.
+At 03:12 the overnight phone rang; at 03:19 it went quiet. Nobody woke up, and monitoring says the site "recovered by itself". Security noticed odd traffic and the CFO asks why the bandwidth bill grew. The CEO wants one page.
+
+The only evidence is the server's access log: 40,000 lines. Nobody reads that by eye, so you will build two small tools that turn it into answers: one that **summarises** a log, and one that **raises an alert** when the error rate is too high. Then you will use the first to solve four small mysteries hidden in the log, and keep both for every log that comes after.
 
 > **Your mission**
 > - Explore the log with the classic text tools (`grep`, `awk`, `cut`, `sort`, `uniq`)
